@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAbsencesTable extends Migration
+class CreateEtablissementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateAbsencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('absences', function (Blueprint $table) {
-            $table->bigInteger('id_absence');
-            $table->integer('nbre_heure_abs');
+        Schema::create('etablissements', function (Blueprint $table) {
+            $table->bigIncrements('id_etablissement');
+            $table->integer('num_agrementation');
+            $table->string('etablissement');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +29,6 @@ class CreateAbsencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('absences');
+        Schema::dropIfExists('etablissements');
     }
 }

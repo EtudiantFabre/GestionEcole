@@ -14,8 +14,11 @@ class CreateCoefficientsTable extends Migration
     public function up()
     {
         Schema::create('coefficients', function (Blueprint $table) {
-            $table->bigInteger('id_coef');
+            $table->bigIncrements('id_coef');
             $table->string('coefficient');
+            $table->bigInteger('id_classe')->unsigned();            
+            $table->foreign('id_classe')->references('id_classe')->on('classes')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
             $table->softDeletes();
         });
