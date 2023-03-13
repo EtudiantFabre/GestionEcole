@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEtablissementsTable extends Migration
+class CreateNiveauSeriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateEtablissementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('etablissements', function (Blueprint $table) {
-            $table->bigInteger('id_etablissement');
-            $table->integer('num_agrementation');
-            $table->string('etablissement');
+        Schema::create('niveau_series', function (Blueprint $table) {
+            $table->bigIncrements('id_niveau');
+            $table->string('niveau');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +28,6 @@ class CreateEtablissementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('etablissements');
+        Schema::dropIfExists('niveau_series');
     }
 }

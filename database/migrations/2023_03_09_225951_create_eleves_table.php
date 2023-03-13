@@ -14,12 +14,17 @@ class CreateElevesTable extends Migration
     public function up()
     {
         Schema::create('eleves', function (Blueprint $table) {
-            $table->bigInteger('id_eleve');
+            $table->bigIncrements('id_eleve');
             $table->string('nom_eleve');
             $table->string('prenom_eleve');
             $table->string('sexe');
             $table->string('date_naissance');
             $table->json('adresse');
+            $table->bigInteger('id_parent')->unsigned();
+            $table->bigInteger('id_etablissement')->unsigned();
+            //$table->foreign('id_patient')->references('id_patient')->on('patients')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_parent')->references('id_parent')->on('parents')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_etablissement')->references('id_etablissement')->on('etablissements')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

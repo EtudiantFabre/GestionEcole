@@ -16,6 +16,7 @@ class CreateTypeNotesTable extends Migration
         Schema::create('type_notes', function (Blueprint $table) {
             $table->bigIncrements('id_type');
             $table->string('designation', 100)->default('rien');
+            
             $table->timestamps();
             $table->softDeletes();
         });

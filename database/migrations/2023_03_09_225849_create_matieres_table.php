@@ -16,6 +16,8 @@ class CreateMatieresTable extends Migration
         Schema::create('matieres', function (Blueprint $table) {
             $table->bigIncrements('id_matiere');
             $table->string('discipline');
+            $table->bigInteger('id_enseignant')->unsigned(); // Ajouter la colonne "id_niveau"
+            $table->foreign('id_enseignant')->references('id_enseignant')->on('enseignants')->onDelete('cascade')->onUpdate('cascade');            
             $table->timestamps();
             $table->softDeletes();
         });

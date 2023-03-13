@@ -14,7 +14,7 @@ class CreateAnneeScolairesTable extends Migration
     public function up()
     {
         Schema::create('annee_scolaires', function (Blueprint $table) {
-            $table->bigIncrements('id_note');
+            $table->bigIncrements('id_annee_scolaire');
             $table->integer('annee_scolaire');
             $table->string('etat_annee');
             $table->timestamps();

@@ -17,6 +17,8 @@ class CreateClassesTable extends Migration
             $table->bigIncrements('id_classe');
             $table->string('nom_classe', 100)->default('rien');
             $table->date('annee_scolaire');
+            $table->bigInteger('id_niveau')->unsigned(); // Ajouter la colonne "id_niveau"
+            $table->foreign('id_niveau')->references('id_niveau')->on('niveau_series')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

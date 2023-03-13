@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateScolaritesTable extends Migration
+class CreateCotisationParralelesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateScolaritesTable extends Migration
      */
     public function up()
     {
-        Schema::create('scolarites', function (Blueprint $table) {
-            $table->bigInteger('id_scolarite');
+        Schema::create('cotisation_parraleles', function (Blueprint $table) {
+            $table->bigIncrements('id_cotisation');
             $table->integer('montant');
+            $table->bigInteger('id_classe')->unsigned();            
+            $table->foreign('id_classe')->references('id_classe')->on('classes')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +30,6 @@ class CreateScolaritesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('scolarites');
+        Schema::dropIfExists('cotisation_parraleles');
     }
 }
