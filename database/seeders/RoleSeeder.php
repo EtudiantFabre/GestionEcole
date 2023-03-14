@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
 
-class RolesSeeder extends Seeder{
+class RoleSeeder extends Seeder{
     public function run(){
         $roles = array('admin', 'eleve', 'enseignant', 'responsable', 'secretaire', 'censeur');
         foreach($roles as $role){
